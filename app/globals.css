@@ -1,0 +1,59 @@
+:root {
+  --bg:#080808; --panel:#111; --panel2:#181818; --text:#f7f7f7;
+  --muted:#a9a9a9; --gold:#ffd000; --line:#2d2d2d; --danger:#ff5c5c;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none} button,input,select,textarea{font:inherit}
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;background:
+linear-gradient(120deg,#070707 0%,#16120a 55%,#070707 100%);overflow:hidden}
+.hero:before{content:"";position:absolute;width:650px;height:650px;border-radius:50%;background:#ffd00018;filter:blur(80px);right:-200px;top:-200px}
+.hero-overlay{position:absolute;inset:0;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:42px 42px}
+.hero-content{position:relative;max-width:850px;text-align:center;padding:40px 22px}
+.brand-mark{width:82px;height:82px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:0 auto 22px;font-size:40px;font-weight:900;color:var(--gold);box-shadow:0 0 40px #ffd00035}
+.eyebrow{color:var(--gold);letter-spacing:.25em;font-size:12px;font-weight:800}
+h1{font-size:clamp(38px,7vw,78px);margin:12px 0}.lead,.page-heading p{color:var(--muted);font-size:19px;line-height:1.6}
+.actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{border:1px solid var(--line);padding:14px 22px;border-radius:999px;font-weight:800;cursor:pointer}
+.btn-primary{background:var(--gold);color:#080808;border-color:var(--gold)}
+.btn-secondary{background:transparent;color:white}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.page-shell{min-height:100vh;padding:70px 18px}.page-heading{text-align:center;max-width:760px;margin:0 auto 34px}.page-heading h1{font-size:clamp(34px,6vw,60px)}
+.reservation-card,.login-card,.admin-panel{max-width:920px;margin:auto;background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 30px 80px #0008}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}label{display:flex;flex-direction:column;gap:8px}label span{font-size:13px;color:#ddd;font-weight:700}
+input,select,textarea{width:100%;background:#090909;color:white;border:1px solid #333;border-radius:12px;padding:14px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+.full{grid-column:1/-1}.slot-area{margin:28px 0}.section-title{display:flex;align-items:end;justify-content:space-between;gap:15px}.section-title h2{margin:0}.section-title span{font-size:12px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}.slot{border:1px solid #333;background:#0c0c0c;color:white;border-radius:14px;padding:15px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}.slot small{color:#79d899}.slot.selected{border-color:var(--gold);box-shadow:0 0 0 2px #ffd00022}.slot.booked{opacity:.38;cursor:not-allowed}.slot.booked small{color:#ff8585}
+.note-field{margin-top:18px}.submit{width:100%;margin-top:20px;border-radius:14px}.privacy-note{text-align:center;color:#777;font-size:12px}
+.notice{padding:14px;border-radius:12px;margin-top:16px}.notice.ok{background:#10351f;color:#a5f0c2}.notice.error{background:#3d1515;color:#ffb0b0}
+.login-shell{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at top,#3d3100,#080808 40%)}.login-card{width:min(440px,100%);display:grid;gap:17px;text-align:center}.login-card h1{font-size:34px}
+.admin-shell{min-height:100vh;padding:35px 4vw}.admin-header{display:flex;justify-content:space-between;gap:18px;align-items:center;max-width:1300px;margin:auto}.admin-header h1{font-size:clamp(26px,4vw,48px);margin:4px 0}.admin-header span{color:var(--muted)}
+.stats{max-width:1300px;margin:28px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.stats article{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}.stats span,.stats small{display:block;color:var(--muted)}.stats strong{font-size:42px;color:var(--gold)}
+.admin-panel{max-width:1300px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filters button,.row-actions button{background:#222;color:#ddd;border:1px solid #333;border-radius:9px;padding:9px 12px;cursor:pointer}.filters button.active{background:var(--gold);color:#080808}
+.table-wrap{overflow:auto;margin-top:15px}table{width:100%;border-collapse:collapse;min-width:760px}th,td{text-align:left;padding:15px;border-bottom:1px solid var(--line);vertical-align:top}th{color:#999;font-size:12px;text-transform:uppercase}.block{display:block;color:#888;margin-top:6px}.badge{display:inline-block;padding:7px 10px;border-radius:999px;background:#333}.badge.onaylandı{background:#174d2d;color:#a7efc2}.badge.iptal{background:#541d1d;color:#ffb6b6}.badge.bekliyor{background:#57470e;color:#ffe58c}.row-actions{display:flex;gap:8px}
+@media(max-width:700px){.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.slots{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr}.admin-header,.panel-head{align-items:flex-start;flex-direction:column}.reservation-card{padding:20px}}
+
+/* v2: takvim ve rezervasyon ayrıntı penceresi */
+.date-picker-wrap{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;cursor:pointer}
+.date-picker-wrap input{cursor:pointer;color-scheme:dark}
+.calendar-button{height:48px;border:1px solid var(--gold);background:#241e03;color:var(--gold);border-radius:12px;padding:0 18px;font-weight:800;cursor:pointer;white-space:nowrap}
+.calendar-button:hover{background:var(--gold);color:#080808}
+.field-help{color:var(--muted);font-size:12px;margin-top:2px}
+.panel-hint{margin:6px 0 0;color:var(--muted);font-size:13px}
+.clickable-row{cursor:pointer;transition:background .18s ease,transform .18s ease}
+.clickable-row:hover{background:#ffd0000a}
+.clickable-row:focus{outline:2px solid var(--gold);outline-offset:-2px}
+.modal-backdrop{position:fixed;inset:0;z-index:1000;background:#000c;backdrop-filter:blur(8px);display:grid;place-items:center;padding:20px}
+.reservation-modal{width:min(760px,100%);max-height:90vh;overflow:auto;position:relative;background:linear-gradient(180deg,#1b1b1b,#0d0d0d);border:1px solid #3a3a3a;border-radius:24px;padding:30px;box-shadow:0 40px 120px #000}
+.reservation-modal h2{font-size:clamp(28px,5vw,48px);margin:8px 0 22px}
+.modal-close{position:absolute;right:18px;top:16px;width:42px;height:42px;border:1px solid #444;border-radius:50%;background:#171717;color:white;font-size:28px;cursor:pointer}
+.modal-close:hover{border-color:var(--gold);color:var(--gold)}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.detail-grid article{background:#090909;border:1px solid #2e2e2e;border-radius:14px;padding:16px;min-height:86px}
+.detail-grid article span:first-child{display:block;color:var(--muted);font-size:12px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em}
+.detail-grid article strong{font-size:16px;line-height:1.45;word-break:break-word}
+.detail-wide{grid-column:1/-1}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.approve-btn{background:#1f6a3b;color:white;border-color:#2e9253}
+.cancel-btn{background:#6b2222;color:white;border-color:#963535}
+@media(max-width:700px){.date-picker-wrap{grid-template-columns:1fr}.calendar-button{width:100%}.detail-grid{grid-template-columns:1fr}.detail-wide{grid-column:auto}.reservation-modal{padding:24px 18px}.modal-actions .btn{width:100%;text-align:center}}
