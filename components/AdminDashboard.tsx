@@ -36,6 +36,13 @@ export default function AdminDashboard({ email }: { email: string }) {
   const [editDate, setEditDate] = useState("");
   const [editTime, setEditTime] = useState("");
   const [saving, setSaving] = useState(false);
+  
+  useEffect(() => {
+  if (selected) {
+    setEditDate(selected.tarih);
+    setEditTime(selected.saat);
+  }
+}, [selected]);
 
   async function load() {
     setLoading(true);
