@@ -65,6 +65,63 @@ export default function AdminDashboard({ email }: { email: string }) {
     setSelected(current => current?.id === id ? { ...current, durum } : current);
     await load();
   }
+  async function updateReservationDateTime() {
+  if (!selected || !editDate || !editTime) {
+    alert("Lütfen tarih ve saat seçin.");
+    return;
+  }
+
+  setSaving(true);
+
+  const { data: existing, error: checkError } = await supabase
+    .from("rezervasyonlar")
+    .select("id")
+    .eq("tarih", editDate)
+    .eq("saat", editTime)
+    .neq("id", selected.id)
+    .neq("durum", "İptal")
+    .limit(1);
+
+  if (checkError) {
+    alert("Müsaitlik kontrolü yapılamadı.");
+    setSaving(false);
+    return;
+  }
+
+  if (existing && existing.length > 0) {
+    alert("Bu tarih ve saat dolu. Başka bir saat seçin.");
+    setSaving(false);
+    return;
+  }
+
+  const { error } = await supabase
+    .from("rezervasyonlar")
+    .update({
+      tarih: editDate,
+      saat: editTime,
+    })
+    .eq("id", selected.id);
+
+  if (error) {
+    alert("Tarih ve saat güncellenemedi.");
+    setSaving(false);
+    return;
+  }
+
+  setSelected((current) =>
+    current
+      ? {
+          ...current,
+          tarih: editDate,
+          saat: editTime,
+        }
+      : current
+  );
+
+  await load();
+  setSaving(false);
+  alert("Rezervasyon tarihi ve saati güncellendi.");
+}
 
   async function logout() {
     await supabase.auth.signOut();
