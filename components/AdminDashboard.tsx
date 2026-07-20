@@ -211,6 +211,60 @@ export default function AdminDashboard({ email }: { email: string }) {
               <article className="detail-wide"><span>Müşteri Notu</span><strong>{selected.notlar || "Not bulunmuyor."}</strong></article>
               <article className="detail-wide"><span>Kayıt Tarihi</span><strong>{formatCreatedAt(selected.created_at)}</strong></article>
             </div>
+            <div className="admin-edit-datetime">
+  <label>
+    <span>Yeni Tarih</span>
+    <input
+      type="date"
+      value={editDate}
+      min={new Date().toISOString().slice(0, 10)}
+      onChange={(e) => setEditDate(e.target.value)}
+    />
+  </label>
+
+  <label>
+    <span>Yeni Saat</span>
+    <select
+      value={editTime}
+      onChange={(e) => setEditTime(e.target.value)}
+    >
+      {[
+        "09:00",
+        "09:30",
+        "10:00",
+        "10:30",
+        "11:00",
+        "11:30",
+        "12:00",
+        "12:30",
+        "13:00",
+        "13:30",
+        "14:00",
+        "14:30",
+        "15:00",
+        "15:30",
+        "16:00",
+        "16:30",
+        "17:00",
+        "17:30",
+        "18:00",
+      ].map((time) => (
+        <option key={time} value={time}>
+          {time}
+        </option>
+      ))}
+    </select>
+  </label>
+
+  <button
+    type="button"
+    className="btn"
+    onClick={updateReservationDateTime}
+    disabled={saving}
+  >
+    {saving ? "Kaydediliyor..." : "Tarih ve Saati Kaydet"}
+  </button>
+</div>
             <div className="modal-actions">
               <a className="btn btn-secondary" href={`tel:${selected.telefon}`}>Müşteriyi Ara</a>
               <button className="btn approve-btn" onClick={() => updateStatus(selected.id, "Onaylandı")}>Onayla</button>
