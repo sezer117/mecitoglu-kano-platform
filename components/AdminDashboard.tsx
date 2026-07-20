@@ -32,6 +32,10 @@ export default function AdminDashboard({ email }: { email: string }) {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("Tümü");
   const [selected, setSelected] = useState<Reservation | null>(null);
+  
+  const [editDate, setEditDate] = useState("");
+  const [editTime, setEditTime] = useState("");
+  const [saving, setSaving] = useState(false);
 
   async function load() {
     setLoading(true);
